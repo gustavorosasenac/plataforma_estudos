@@ -2,11 +2,7 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 from sqlalchemy import Column, String, Integer, Date, ForeignKey
-from sqlalchemy.orm import declarative_base
-from banco.db import session
-
-
-Base = declarative_base()
+from DB.db import session, Base, engine
 
 class Curso(Base):
     __tablename__ = 'curso'
@@ -24,7 +20,7 @@ class Curso(Base):
         c_materias = input(str("Digite as materias deste curso: "))
         novo_curso = Curso (nome = c_nome, materias = c_materias)
         session.add(novo_curso)
-        session.commit
+        session.commit()
         print("Curso cadastrado com sucesso!")
 
     def listar_curso():
