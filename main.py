@@ -3,7 +3,6 @@ from database.db_connections.db import Base, engine
 
 Base.metadata.create_all(engine)
 
-
 while True:
 
     print("\n-------------------MENU-------------------")
@@ -41,7 +40,33 @@ while True:
                     print("opção invalida!")
 
         case "2":
-            pass
+            print("\n-----------------ALUNOS-----------------\n")
+            print("Digite 1 para cadastrar um aluno\n"
+                  "Digite 2 para listar os alunos\n"
+                  "Digite 3 para editar um aluno\n"
+                  "Digite 4 para excluir um aluno\n"
+                  "Digite SAIR para sair do menu")
+
+            nova_opcao = input("Digite a opção desejada: ")
+
+            match nova_opcao:
+                case "1":
+                    from models.usuario import cadastro_aluno
+                    cadastro_aluno()
+                case "2":
+                    from models.usuario import listar_alunos
+                    listar_alunos()
+                case "3":
+                    from models.usuario import alterar_aluno
+                    alterar_aluno()
+                case "4":
+                    from models.usuario import excluir_aluno
+                    excluir_aluno()
+                case "SAIR":
+                    break
+                case _:
+                    print("opção invalida!")
+
         case "3":
             pass
         
