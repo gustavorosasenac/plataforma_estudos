@@ -48,8 +48,8 @@ class Curso(Base):
         else:
             nome = input("Digite o novo nome do curso: ")
             materias = input("Digite as novas materias do curso: ")
-            att = Curso (nome = nome, materias = materias)
-            session.update(att)
+            Curso.nome = nome
+            Curso.materias = materias
             session.commit()
             print("Curso atualizado!")
     
