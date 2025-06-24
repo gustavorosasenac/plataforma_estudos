@@ -1,7 +1,5 @@
 from sqlalchemy import Column, String, Integer, Date, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from DB.db import session, Base
 
 class Aulas(Base):
     __tablename__ = 'aula'

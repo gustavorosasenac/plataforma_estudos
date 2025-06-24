@@ -1,8 +1,5 @@
 from sqlalchemy import Column, String, Integer, Date, ForeignKey, Boolean
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
-
+from DB.db import session, Base
 
 class Comentario(Base):
     __tablename__ = 'comentario'
