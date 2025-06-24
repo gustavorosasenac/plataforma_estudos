@@ -1,5 +1,5 @@
 from models.curso import Curso
-from DB.db import Base, engine
+from database.db_connections.db import Base, engine
 
 Base.metadata.create_all(engine)
 

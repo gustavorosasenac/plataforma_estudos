@@ -1,5 +1,5 @@
-from sqlalchemy import Column, String, Integer, Date, ForeignKey
-from DB.db import session, Base
+from sqlalchemy import Column, String, Integer, ForeignKey
+from database.db_connections.db import Base
 
 class Aulas(Base):
     __tablename__ = 'aula'

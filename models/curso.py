@@ -1,8 +1,8 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
-from sqlalchemy import Column, String, Integer, Date, ForeignKey
-from DB.db import session, Base
+from sqlalchemy import Column, String, Integer
+from database.db_connections.db import session, Base
 
 class Curso(Base):
     __tablename__ = 'curso'
