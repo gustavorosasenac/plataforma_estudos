@@ -13,7 +13,7 @@ class Curso(Base):
     #comentarios = Column(Integer, ForeignKey('comentario.id'), nullable=True)
     #aulas = Column(Integer, ForeignKey('aula.id'), nullable=True)
 
-
+class OperacoesCurso(Curso):
     def cadastrar_curso(self):
         print("---------CADASTRO DE CURSO---------")
         nome = input(str("Digite o nome do curso: "))
