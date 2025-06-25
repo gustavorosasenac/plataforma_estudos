@@ -1,5 +1,7 @@
-from models.curso import Curso
+from models.curso import OperacoesCurso
 from database.db_connections.db import Base, engine
+from models.usuario import Aluno
+
 
 Base.metadata.create_all(engine)
 
@@ -27,19 +29,20 @@ while True:
 
             match nova_opcao:
                 case "1":
-                    Curso.cadastrar_curso()
+                    OperacoesCurso.cadastrar_curso()
                 case "2":
-                    Curso.listar_curso()
+                    OperacoesCurso.listar_curso()
                 case "3":
-                    Curso.alterar_curso()
+                    OperacoesCurso.alterar_curso()
                 case "4":
-                    Curso.excluir_curso()
+                    OperacoesCurso.excluir_curso()
                 case "SAIR":
                     break
                 case _:
                     print("opção invalida!")
 
         case "2":
+
             print("\n-----------------ALUNOS-----------------\n")
             print("Digite 1 para cadastrar um aluno\n"
                   "Digite 2 para listar os alunos\n"
@@ -51,17 +54,13 @@ while True:
 
             match nova_opcao:
                 case "1":
-                    from models.usuario import cadastro_aluno
-                    cadastro_aluno()
+                    Aluno.cadastro_aluno()
                 case "2":
-                    from models.usuario import listar_alunos
-                    listar_alunos()
+                    Aluno.listar_aluno()
                 case "3":
-                    from models.usuario import alterar_aluno
-                    alterar_aluno()
+                    pass
                 case "4":
-                    from models.usuario import excluir_aluno
-                    excluir_aluno()
+                    pass
                 case "SAIR":
                     break
                 case _:

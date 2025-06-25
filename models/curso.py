@@ -14,7 +14,7 @@ class Curso(Base):
     #aulas = Column(Integer, ForeignKey('aula.id'), nullable=True)
 
 class OperacoesCurso(Curso):
-    def cadastrar_curso(self):
+    def cadastrar_curso():
         print("---------CADASTRO DE CURSO---------")
         nome = input(str("Digite o nome do curso: "))
         materias = input(str("Digite as materias deste curso: "))
@@ -30,7 +30,7 @@ class OperacoesCurso(Curso):
             session.commit()
             print("Curso cadastrado com sucesso!")
 
-    def listar_curso(self):
+    def listar_curso():
         print("---------LISTA DE CURSOS---------")
         cursos = session.query(Curso).all()
         if not cursos:
@@ -39,7 +39,7 @@ class OperacoesCurso(Curso):
             for c in cursos:
                 print(f"ID: {c.id} Nome: {c.nome} Materias: {c.materias}")
 
-    def alterar_curso(self):
+    def alterar_curso():
         print("-----------ALTERAR CURSO-----------")
         id = input("Digite o id do curso que deseja alterar: ")
         verificar = session.query(Curso).filter(Curso.id == id).first()
@@ -53,7 +53,7 @@ class OperacoesCurso(Curso):
             session.commit()
             print("Curso atualizado!")
     
-    def excluir_curso(self):
+    def excluir_curso():
         print("-----------EXCLUIR CURSO-----------")
         id = input("Digite o ID do curso que deseja excluir: ")
         verificar = session.query(Curso).filter(Curso.id == id).first()
