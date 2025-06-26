@@ -14,11 +14,89 @@ class Usuario(Base):
     pais = Column(String(50))
     cep = Column(String(30))
 
-'''class Professor(Usuario):
+class Professor(Usuario):
     __tablename__ = 'professor'
-    materias = Column(String)
+    id = Column(Integer, ForeignKey('usuario.id'), primary_key=True)
+    materias = Column(String(200))
     #curso = Column(Integer, ForeignKey('curso.id'))
-    #aulas = Column(Integer, ForeignKey('aula.id'))'''
+    #aulas = Column(Integer, ForeignKey('aula.id'))
+
+    def cadastro_professor():
+        print("---------CADASTRO DE PROFESSOR---------")
+        nome = input("Digite o nome do professor: ")
+        nascimento = input("Digite a data de nascimento (YYYY-MM-DD): ")
+        genero = input("Digite o gênero do professor: ")
+        email = input("Digite o email do professor: ")
+        telefone = input("Digite o telefone do professor: ")
+        cidade = input("Digite a cidade do professor: ")
+        estado = input("Digite o estado do professor: ")
+        pais = input("Digite o país do professor: ")
+        cep = input("Digite o CEP do professor: ")
+        materias = input("Digite as materias do professor: ")
+
+        if not all([nome, nascimento, email, telefone]):
+            print("Preencha todos os campos obrigatórios!")
+            return
+
+        novo_professor = Professor(nome=nome,nascimento=nascimento,genero=genero,email=email,telefone=telefone,cidade=cidade,estado=estado,pais=pais,cep=cep,materias=materias)
+
+        session.add(novo_professor)
+        session.commit()
+        print("Professor cadastrado com sucesso!")
+    
+    def listar_professor():
+        print("-------------LISTA DE PROFESSORES-------------")
+        professores = session.query(Professor).all()
+        if not professores:
+            print("Nenhum professor cadastrado!")
+        else:
+            for p in professores:
+                print(f"ID: {p.id}, Nome: {p.nome}, Nascimento: {p.nascimento}, Genero: {p.genero}, E-mail: {p.email}, Telefone: {p.telefone}, Cidade: {p.cidade}, Estado: {p.estado}, Pais: {p.pais}, CEP: {p.cep}, Materias: {p.materias}" )
+                return
+            
+    def alterar_professor():
+        print("------------ALTERAR PROFESSOR------------")
+        id = input("Digite o ID do professor que deseja alterar: ")
+        verificar = session.query(Professor).filter(Professor.id == id).first()
+        if not verificar:
+            print("Professor não encontrado")
+        else:
+            nome = input("Digite o nome do professor: ")
+            nascimento= input("Digite a data de nascimento do professor: ")
+            genero = input("Digite o genero do professor: ")
+            email = input("Digite o E-mail do professor: ")
+            telefone = input("Digite o telefone do aprofessor")
+            cidade = input("Digite a cidade do professor: ")
+            estado = input("Digite o estado do professor: ")
+            pais = input("Digite o pais do professor: ")
+            cep = input("Digite o CEP do professor: ")
+            materias = input("Digite as materias do professor: ")
+            if not all([nome, nascimento, genero, email, telefone, cidade, estado, pais, cep, materias]):
+                print("Preencha todos os campos")
+                return
+            else:
+                verificar.nome = nome
+                verificar.nascimento
+                verificar.genero = genero
+                verificar.email = email
+                verificar.telefone = telefone
+                verificar.cidade = cidade
+                verificar.estado = estado
+                verificar.pais = pais
+                verificar.cep = cep
+                verificar.materias = materias
+                session.commit()
+                print("Informações do professor atualizadas!")
+
+    def excluir_professor():
+        print("-------------EXCLUIR PROFESSOR-------------")
+        id = input("Digite o id do professor que deseja excluir: ")
+        verificar = session.query(Professor).filter(Professor.id == id).first()
+        if not verificar:
+            print("Professor não encontrado!")
+        else:
+            session.delete(verificar)
+            session.commit()
 
 class Aluno(Usuario):
     __tablename__ = 'aluno'
@@ -98,7 +176,7 @@ class Aluno(Usuario):
 
     def excluir_aluno():
         print("-------------EXCLUIR CURSO-------------")
-        id = input("Digite o id do curso que deseja excluir: ")
+        id = input("Digite o id do aluno que deseja excluir: ")
         verificar = session.query(Aluno).filter(Aluno.id == id).first()
         if not verificar:
             print("Aluno não encontrado!")
