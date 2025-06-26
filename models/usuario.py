@@ -63,7 +63,46 @@ class Aluno(Usuario):
                 return
             
     def alterar_aluno():
-        pass
+        print("------------ALTERAR ALUNO------------")
+        id = input("Digite o ID do aluno que deseja alterar: ")
+        verificar = session.query(Aluno).filter(Aluno.id == id).first()
+        if not verificar:
+            print("Aluno não encontrado")
+        else:
+            nome = input("Digite o nome do aluno: ")
+            nascimento= input("Digite a data de nascimento do aluno: ")
+            genero = input("Digite o genero do aluno: ")
+            email = input("Digite o E-mail do aluno: ")
+            telefone = input("Digite o telefone do aluno")
+            cidade = input("Digite a cidade do aluno: ")
+            estado = input("Digite o estado do aluno: ")
+            pais = input("Digite o pais do aluno: ")
+            cep = input("Digite o CEP do aluno: ")
+            materias = input("Digite as materias do aluno: ")
+            if not all([nome, nascimento, genero, email, telefone, cidade, estado, pais, cep, materias]):
+                print("Preencha todos os campos")
+                return
+            else:
+                verificar.nome = nome
+                verificar.nascimento
+                verificar.genero = genero
+                verificar.email = email
+                verificar.telefone = telefone
+                verificar.cidade = cidade
+                verificar.estado = estado
+                verificar.pais = pais
+                verificar.cep = cep
+                verificar.materias = materias
+                session.commit()
+                print("Informações do aluno atualizadas!")
 
     def excluir_aluno():
-        pass
+        print("-------------EXCLUIR CURSO-------------")
+        id = input("Digite o id do curso que deseja excluir: ")
+        verificar = session.query(Aluno).filter(Aluno.id == id).first()
+        if not verificar:
+            print("Aluno não encontrado!")
+        else:
+            session.delete(verificar)
+            session.commit()
+        

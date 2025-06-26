@@ -58,9 +58,9 @@ while True:
                 case "2":
                     Aluno.listar_aluno()
                 case "3":
-                    pass
+                    Aluno.alterar_aluno()
                 case "4":
-                    pass
+                    Aluno.excluir_aluno()
                 case "SAIR":
                     break
                 case _:
