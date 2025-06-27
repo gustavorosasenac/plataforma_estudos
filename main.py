@@ -3,6 +3,7 @@ from database.db_connections.db import Base, engine
 from models.usuario import Aluno, Professor
 from models.aula import OperacoesAulas
 from models.prova import OperacoesProva
+from models.material import OperacoesMaterial
 
 
 Base.metadata.create_all(engine)
@@ -11,11 +12,12 @@ while True:
 
     print("\n-------------------MENU-------------------")
     print("Digite SAIR para Sair do programa\n\n"
-    "Digite 1 CURSOS\n"
-    "Digite 2 ALUNOS\n"
-    "Digite 3 PROFESSORES\n"
-    "Digite 4 AULAS\n"
-    "Digite 5 PROVAS\n")
+    "Digite 1 para CURSOS\n"
+    "Digite 2 para ALUNOS\n"
+    "Digite 3 para PROFESSORES\n"
+    "Digite 4 para AULAS\n"
+    "Digite 5 para PROVAS\n" \
+    "Digite 6 para MATERIAL\n")
 
     opcao = input("\nDigite a opção desejada: ")
 
@@ -140,6 +142,30 @@ while True:
                     break
                 case _:
                     print("opção invalida!")
+        case "6":
+            print("\n-----------------MATERIAL-----------------\n")
+            print("Digite 1 para cadastrar um material\n"
+                  "Digite 2 para listar os materiais\n"
+                  "Digite 3 para editar um material\n"
+                  "Digite 4 para excluir um material\n"
+                  "Digite SAIR para sair do menu")
+
+            nova_opcao = input("Digite a opção desejada: ")
+
+            match nova_opcao:
+                case "1":
+                    OperacoesMaterial.cadastrar_material()
+                case "2":
+                    OperacoesMaterial.listar_materiais()
+                case "3":
+                    OperacoesMaterial.editar_material()
+                case "4":
+                    OperacoesMaterial.excluir_material()
+                case "SAIR":
+                    break
+                case _:
+                    print("opção invalida!")
+
 
 
 

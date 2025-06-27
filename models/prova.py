@@ -9,7 +9,7 @@ class Prova(Base):
     __tablename__ = 'prova'
     id = Column(Integer, primary_key=True, autoincrement=True)
     curso = Column(Integer, ForeignKey('curso.id'), nullable=True)
-    #material = Column(Integer, ForeignKey('material.id'), nullable=True)
+    material = Column(Integer, ForeignKey('material.id'), nullable=True)
     titulo = Column(String(25), nullable=False)
     descricao = Column(String(500))
     nota = Column(String(500))

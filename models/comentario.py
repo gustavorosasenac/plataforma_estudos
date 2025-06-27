@@ -4,8 +4,8 @@ from database.db_connections.db import Base
 class Comentario(Base):
     __tablename__ = 'comentario'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    titulo = Column(String)
-    descricao = Column(String)
+    titulo = Column(String(100))
+    descricao = Column(String(100))
     data_comentario = Column(Date)
     aula = Column(ForeignKey('aula.id'), nullable=True)
     curso = Column(ForeignKey('curso.id'), nullable=True)
