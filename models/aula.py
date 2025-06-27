@@ -9,7 +9,7 @@ class Aulas(Base):
     materia = Column(String(100))
     check_in = Column(String(100))
     #comentarios = Column(ForeignKey('comentario.id'), nullable=True)
-    material = Column(ForeignKey('material.id'), nullable=True)
+    #material = Column(ForeignKey('material.id'), nullable=True)
     provas = Column(Integer, ForeignKey('prova.id'), nullable=True)
 
 class OperacoesAulas(Aulas):

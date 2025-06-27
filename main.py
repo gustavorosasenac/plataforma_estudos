@@ -4,6 +4,7 @@ from models.usuario import Aluno, Professor
 from models.aula import OperacoesAulas
 from models.prova import OperacoesProva
 from models.material import OperacoesMaterial
+from models.comentario import OperacoesComentario
 
 
 Base.metadata.create_all(engine)
@@ -16,8 +17,9 @@ while True:
     "Digite 2 para ALUNOS\n"
     "Digite 3 para PROFESSORES\n"
     "Digite 4 para AULAS\n"
-    "Digite 5 para PROVAS\n" \
-    "Digite 6 para MATERIAL\n")
+    "Digite 5 para PROVAS\n"
+    "Digite 6 para MATERIAL\n"
+    "Digite 7 para COMENTARIO\n")
 
     opcao = input("\nDigite a opção desejada: ")
 
@@ -165,6 +167,30 @@ while True:
                     break
                 case _:
                     print("opção invalida!")
+        case "7":
+            print("\n-----------------COMENTARIO-----------------\n")
+            print("Digite 1 para cadastrar um comentario\n"
+                  "Digite 2 para listar os comentarios\n"
+                  "Digite 3 para editar um comentario\n"
+                  "Digite 4 para excluir um comentario"
+                  "Digite SAIR para sair do menu")
+
+            nova_opcao = input("Digite a opção desejada: ")
+
+            match nova_opcao:
+                case "1":
+                    OperacoesComentario.cadastrar_comentario()
+                case "2":
+                    OperacoesComentario.listar_comentario()
+                case "3":
+                    OperacoesComentario.editar_comentario()
+                case "4":
+                    OperacoesComentario.excluir_comentario()
+                case "SAIR":
+                    break
+                case _:
+                    print("opção invalida!")
+
 
 
 
