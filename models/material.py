@@ -10,6 +10,6 @@ class Material(Base):
     materia = Column(String)
     formato = Column(String(5))
     caminho_arquivo = Column(String)
-    aula = Column(Integer, ForeignKey('aula.id'))
+    aula = Column(Integer, ForeignKey('aula.id'), nullable=True)
 
 

@@ -1,6 +1,8 @@
 from models.curso import OperacoesCurso
 from database.db_connections.db import Base, engine
-from models.usuario import Aluno
+from models.usuario import Aluno, Professor
+from models.aula import OperacoesAulas
+from models.prova import OperacoesProva
 
 
 Base.metadata.create_all(engine)
@@ -11,7 +13,9 @@ while True:
     print("Digite SAIR para Sair do programa\n\n"
     "Digite 1 CURSOS\n"
     "Digite 2 ALUNOS\n"
-    "Digite 3 PROFESSORES")
+    "Digite 3 PROFESSORES\n"
+    "Digite 4 AULAS\n"
+    "Digite 5 PROVAS\n")
 
     opcao = input("\nDigite a opção desejada: ")
 
@@ -67,8 +71,76 @@ while True:
                     print("opção invalida!")
 
         case "3":
-            pass
+            print("\n-----------------PROFESSORES-----------------\n")
+            print("Digite 1 para cadastrar um Professor\n"
+                  "Digite 2 para listar os Professores\n"
+                  "Digite 3 para editar um Professor\n"
+                  "Digite 4 para excluir um Professor\n"
+                  "Digite SAIR para sair do menu")
+
+            nova_opcao = input("Digite a opção desejada: ")
+
+            match nova_opcao:
+                case "1":
+                    Professor.cadastro_professor()
+                case "2":
+                    Professor.listar_professor()
+                case "3":
+                    Professor.alterar_professor()
+                case "4":
+                    Professor.excluir_professor()
+                case "SAIR":
+                    break
+                case _:
+                    print("opção invalida!")
         
+        case "4":
+            print("\n-----------------AULAS-----------------\n")
+            print("Digite 1 para cadastrar uma aula\n"
+                  "Digite 2 para listar as aulas\n"
+                  "Digite 3 para editar uma aula\n"
+                  "Digite 4 para excluir uma aula\n"
+                  "Digite SAIR para sair do menu")
+
+            nova_opcao = input("Digite a opção desejada: ")
+
+            match nova_opcao:
+                case "1":
+                    OperacoesAulas.cadastrar_aula()
+                case "2":
+                    OperacoesAulas.listar_aula()
+                case "3":
+                    OperacoesAulas.alterar_aula()
+                case "4":
+                    OperacoesAulas.excluir_aula()
+                case "SAIR":
+                    break
+                case _:
+                    print("opção invalida!")
+        case "5":
+            print("\n-----------------PROVAS-----------------\n")
+            print("Digite 1 para cadastrar uma prova\n"
+                  "Digite 2 para listar as provas\n"
+                  "Digite 3 para editar uma prova\n"
+                  "Digite 4 para excluir uma prova\n"
+                  "Digite SAIR para sair do menu")
+
+            nova_opcao = input("Digite a opção desejada: ")
+
+            match nova_opcao:
+                case "1":
+                    OperacoesProva.cadastrar_prova()
+                case "2":
+                    OperacoesProva.listar_prova()
+                case "3":
+                    OperacoesProva.alterar_prova()
+                case "4":
+                    OperacoesProva.excluir_prova()
+                case "SAIR":
+                    break
+                case _:
+                    print("opção invalida!")
+
 
 
         case "SAIR":

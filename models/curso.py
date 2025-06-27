@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
-from sqlalchemy import Column, String, Integer
+from sqlalchemy import Column, String, Integer, ForeignKey
 from database.db_connections.db import session, Base
 
 class Curso(Base):
@@ -9,9 +9,9 @@ class Curso(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     nome = Column(String(100), nullable=False)
     materias = Column(String(500), nullable=False)
-    #alunos = Column(Integer, ForeignKey('aluno.id'), nullable=True)
+    alunos = Column(Integer, ForeignKey('aluno.id'), nullable=True)
     #comentarios = Column(Integer, ForeignKey('comentario.id'), nullable=True)
-    #aulas = Column(Integer, ForeignKey('aula.id'), nullable=True)
+    aula = Column(Integer, ForeignKey('aula.id'), nullable=True)
 
 class OperacoesCurso(Curso):
     def cadastrar_curso():

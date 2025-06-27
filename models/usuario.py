@@ -18,8 +18,8 @@ class Professor(Usuario):
     __tablename__ = 'professor'
     id = Column(Integer, ForeignKey('usuario.id'), primary_key=True)
     materias = Column(String(200))
-    #curso = Column(Integer, ForeignKey('curso.id'))
-    #aulas = Column(Integer, ForeignKey('aula.id'))
+    #curso = Column(Integer, ForeignKey('curso.id'), nullable=True)
+    #aulas = Column(Integer, ForeignKey('aula.id'), nullable=True)
 
     def cadastro_professor():
         print("---------CADASTRO DE PROFESSOR---------")
@@ -101,11 +101,11 @@ class Professor(Usuario):
 class Aluno(Usuario):
     __tablename__ = 'aluno'
     id = Column(Integer, ForeignKey('usuario.id'), primary_key=True)
-    #cursos = Column(Integer, ForeignKey('curso.id'))
+    cursos = Column(Integer, ForeignKey('curso.id'))
     #em_progresso = Column(Integer, ForeignKey('aula.id'))
-    #aulas = Column(Integer, ForeignKey('aula.id'))
+    aulas = Column(Integer, ForeignKey('aula.id'))
     materias = Column(String(200))
-    #provas = Column(Integer, ForeignKey('prova.id'))
+    provas = Column(Integer, ForeignKey('prova.id'))
 
     def cadastro_aluno():
         print("---------CADASTRO DE ALUNO---------")

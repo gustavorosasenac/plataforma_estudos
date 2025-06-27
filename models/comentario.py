@@ -7,9 +7,9 @@ class Comentario(Base):
     titulo = Column(String)
     descricao = Column(String)
     data_comentario = Column(Date)
-    aula = Column(ForeignKey('aula.id'))
-    curso = Column(ForeignKey('curso.id'))
-    aluno = Column(ForeignKey('aula.id'))
+    aula = Column(ForeignKey('aula.id'), nullable=True)
+    curso = Column(ForeignKey('curso.id'), nullable=True)
+    aluno = Column(ForeignKey('aula.id'), nullable=True)
     anonimo = Column(Boolean, default=False)
 
 
